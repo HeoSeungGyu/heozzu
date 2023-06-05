@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>연화세계</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="topdiv">
+			<div class="top2div">
+				<img src="./images/10758984_menu_icon.svg">
+				<img src="./images/10131954_search_line_icon.svg" style="float:right; padding-right:300px;">
+			</div>
+			<div>
+				<div class="absolute" style="margin-right: 20px;">괴로움이 없으며 지극히 안락하고 자유로운 세상</div>
+			</div>
+			<div class="container">
+				<div class="rogo" style="font-size: 26px;">
+					<div class="childrogo">브랜딩</div>
+					로고
+				</div>
+				<div class="mainText">
+					<div class="childmainText" style="font-size: 50px;">
+						<a href="#" onclick="mainPage()">蓮花世界</a>
+					</div>
+					<div style="font-size: 30px; margin-right: 10px; margin-top: 10px;">
+						<a href="#" onclick="mainPage()">연&nbsp;&nbsp;화&nbsp;&nbsp;세&nbsp;&nbsp;계</a>
+					</div>
+				</div>
+			</div>
+			<div id="myDiv" class="top2div" style="display: flex; align-items: center; font-size: 20px; margin-top: 40px; margin-bottom: 10px;">
+				<div onclick="pageMove('today'); return false;" style="float: left; width: 14%; margin-bottom: 20px;">
+					<span id="today" style="color: black;"></span>
+				</div>
+				<div style="text-align: center; width: 14%; margin-bottom: 20px;"><a href="#" id="teaRoom" onclick="pageMove('teaRoom', 'this'); return false;">다실</a></div>
+                <div style="text-align: center; width: 15%; margin-bottom: 20px;"><a href="#" onclick="testStart(); return false;">심리검사</a></div>
+				<div style="text-align: center; width: 15%; margin-bottom: 20px;"><a href="#" id="clothes" onclick="pageMove('clothes', 'this'); return false;">복식대여</a></div>
+				<div style="text-align: center; width: 14%; margin-bottom: 20px;"><a href="#" id="photo" onclick="pageMove('photo', 'this'); return false;">사진관</a></div>
+				<div style="text-align: center; width: 14%; margin-bottom: 20px;"><a href="#" id="reserve" onclick="pageMove('reserve', 'this'); return false;">예약</a></div>
+				<div style="text-align: center; width: 14%; margin-bottom: 20px;"><a href="#" id="inquery" onclick="pageMove('inquery', 'this'); return false;">문의</a></div>
+			</div>
+		</div>
+		<iframe id="content" src="./today.html" frameborder=0; framespacing=0; marginheight=0; marginwidth=0; scrolling=no; vspace=0; style="width: 100%; height: 1000px; background-color:white;"></iframe>
+	<script language="javascript">
+	function mainPage() {
+		location.href = "./main.html";
+	}
+	    
+	function displayToday() {
+      var today = new Date();
+      var year = today.getFullYear();
+      var month = (today.getMonth() + 1).toString().padStart(2, '0');
+      var day = today.getDate().toString().padStart(2, '0');
+      var dateStr = year + " - " + month + " - " + day;
+
+      document.getElementById("today").textContent = dateStr;
+    }
+    displayToday();
+	
+	function testStart() {
+		// URL을 새창으로 연다
+		window.open("https://heozzu.waveon.io");   
+	}
+	
+	function pageMove(pageName, obj) {
+		var page = pageName + ".html";
+		var _src = page;
+		
+		document.getElementById('content').src = _src;
+		if(pageName == "today") {
+			document.getElementById("today").style.textDecoration = "underline";
+			document.getElementById("today").style.textUnderlinePosition  = "under";
+			document.getElementById("teaRoom").style.textDecoration = "";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "";
+			document.getElementById("clothes").style.textDecoration = "";
+			document.getElementById("clothes").style.textUnderlinePosition  = "";
+			document.getElementById("photo").style.textDecoration = "";
+			document.getElementById("photo").style.textUnderlinePosition  = "";
+			document.getElementById("reserve").style.textDecoration = "";
+			document.getElementById("reserve").style.textUnderlinePosition  = "";
+			document.getElementById("inquery").style.textDecoration = "";
+			document.getElementById("inquery").style.textUnderlinePosition  = "";		 
+		}	
+		else if(pageName == "teaRoom") {
+			document.getElementById("today").style.textDecoration = "";
+			document.getElementById("today").style.textUnderlinePosition  = "";
+			document.getElementById("teaRoom").style.textDecoration = "underline";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "under";
+			document.getElementById("clothes").style.textDecoration = "";
+			document.getElementById("clothes").style.textUnderlinePosition  = "";
+			document.getElementById("photo").style.textDecoration = "";
+			document.getElementById("photo").style.textUnderlinePosition  = "";
+			document.getElementById("reserve").style.textDecoration = "";
+			document.getElementById("reserve").style.textUnderlinePosition  = "";
+			document.getElementById("inquery").style.textDecoration = "";
+			document.getElementById("inquery").style.textUnderlinePosition  = "";		 
+		}
+		else if(pageName == "clothes") {
+			document.getElementById("today").style.textDecoration = "";
+			document.getElementById("today").style.textUnderlinePosition  = "";
+			document.getElementById("teaRoom").style.textDecoration = "";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "";
+			document.getElementById("clothes").style.textDecoration = "underline";
+			document.getElementById("clothes").style.textUnderlinePosition  = "under";
+			document.getElementById("photo").style.textDecoration = "";
+			document.getElementById("photo").style.textUnderlinePosition  = "";
+			document.getElementById("reserve").style.textDecoration = "";
+			document.getElementById("reserve").style.textUnderlinePosition  = "";
+			document.getElementById("inquery").style.textDecoration = "";
+			document.getElementById("inquery").style.textUnderlinePosition  = "";
+		}
+		
+		else if(pageName == "photo") {
+			document.getElementById("today").style.textDecoration = "";
+			document.getElementById("today").style.textUnderlinePosition  = "";
+			document.getElementById("teaRoom").style.textDecoration = "";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "";
+			document.getElementById("clothes").style.textDecoration = "";
+			document.getElementById("clothes").style.textUnderlinePosition  = "";
+			document.getElementById("photo").style.textDecoration = "underline";
+			document.getElementById("photo").style.textUnderlinePosition  = "under";
+			document.getElementById("reserve").style.textDecoration = "";
+			document.getElementById("reserve").style.textUnderlinePosition  = "";
+			document.getElementById("inquery").style.textDecoration = "";
+			document.getElementById("inquery").style.textUnderlinePosition  = "";
+		}
+		else if(pageName == "reserve") {
+			document.getElementById("today").style.textDecoration = "";
+			document.getElementById("today").style.textUnderlinePosition  = "";
+			document.getElementById("teaRoom").style.textDecoration = "";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "";
+			document.getElementById("clothes").style.textDecoration = "";
+			document.getElementById("clothes").style.textUnderlinePosition  = "";
+			document.getElementById("photo").style.textDecoration = "";
+			document.getElementById("photo").style.textUnderlinePosition  = "";
+			document.getElementById("reserve").style.textDecoration = "underline";
+			document.getElementById("reserve").style.textUnderlinePosition  = "under";
+			document.getElementById("inquery").style.textDecoration = "";
+			document.getElementById("inquery").style.textUnderlinePosition  = "";
+		}
+		else if(pageName == "inquery") {
+			document.getElementById("today").style.textDecoration = "";
+			document.getElementById("today").style.textUnderlinePosition  = "";
+			document.getElementById("teaRoom").style.textDecoration = "";
+			document.getElementById("teaRoom").style.textUnderlinePosition  = "";
+			document.getElementById("clothes").style.textDecoration = "";
+			document.getElementById("clothes").style.textUnderlinePosition  = "";
+			document.getElementById("photo").style.textDecoration = "";
+			document.getElementById("photo").style.textUnderlinePosition  = "";
+			document.getElementById("reserve").style.textDecoration = "";
+			document.getElementById("reserve").style.textUnderlinePosition  = "";
+			document.getElementById("inquery").style.textDecoration = "underline";
+			document.getElementById("inquery").style.textUnderlinePosition  = "under";
+		}
+		else {
+			return false;
+		}
+   }
+	</script>
+	</body>	
+</html>          

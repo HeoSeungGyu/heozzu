@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>연화세계</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style>
+.flex-container{
+            display: flex;
+            margin: 5px;
+            font-size: 24px;
+        }
+        .flex-container.row{flex-direction: row;}
+        .flex-container.column{flex-direction: column;}
+        .flex-container.row-reverse{flex-direction: row-reverse;}
+        .flex-container.column-reverse{flex-direction: column-reverse;}
+        .flex-item{
+            width: 100px;
+            height: 300px;
+            margin: 5px;
+            text-align: center;
+        }
+	</style>
+	</head>
+	<body style="overflow:hidden;">
+	<table style="width: 100%; background: url(./images/background2.png);">
+		<td style="width: 15%;">
+			<div style="display: flex;">
+				<div class="flex-container column">
+					<div class="flex-item">
+						<a href="#" id="goguryeoClothes" onclick="pageMove('goguryeoClothes', this); return false;" style="text-decoration: underline; text-underline-position: under;">고구려</a>
+					</div>
+					<div class="flex-item">
+						<a href="#" id="baekjeClothes" onclick="pageMove('baekjeClothes', this); return false;">백제</a>
+					</div>
+					<div class="flex-item">
+						<a href="#" id="sinlaClothes" onclick="pageMove('sinlaClothes', this); return false;">신라</a>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td>
+			<iframe id="content" src="./goguryeoClothes.html" frameborder=0; framespacing=0; marginheight=0; marginwidth=0; scrolling=no; vspace=0; style="width: 100%; height: 1000px;"></iframe>
+		</td>
+	</table>
+	<script>
+	function pageMove(pageName, obj) {
+		var page = pageName + ".html";
+		var _src = page;
+		
+		document.getElementById('content').src = _src;
+		
+		if(pageName == "goguryeoClothes") {
+			document.getElementById("goguryeoClothes").style.textDecoration = "underline";
+			document.getElementById("goguryeoClothes").style.textUnderlinePosition  = "under";
+			document.getElementById("baekjeClothes").style.textDecoration = "";
+			document.getElementById("baekjeClothes").style.textUnderlinePosition  = "";
+			document.getElementById("sinlaClothes").style.textDecoration = "";
+			document.getElementById("sinlaClothes").style.textUnderlinePosition  = "";	 
+	  }
+		else if(pageName == "baekjeClothes") {
+			document.getElementById("goguryeoClothes").style.textDecoration = "";
+			document.getElementById("goguryeoClothes").style.textUnderlinePosition  = "";
+			document.getElementById("baekjeClothes").style.textDecoration = "underline";
+			document.getElementById("baekjeClothes").style.textUnderlinePosition  = "under";
+			document.getElementById("sinlaClothes").style.textDecoration = "";
+			document.getElementById("sinlaClothes").style.textUnderlinePosition  = "";
+		}
+		
+		else if(pageName == "sinlaClothes") {
+			document.getElementById("goguryeoClothes").style.textDecoration = "";
+			document.getElementById("goguryeoClothes").style.textUnderlinePosition  = "";
+			document.getElementById("baekjeClothes").style.textDecoration = "";
+			document.getElementById("baekjeClothes").style.textUnderlinePosition  = "";
+			document.getElementById("sinlaClothes").style.textDecoration = "underline";
+			document.getElementById("sinlaClothes").style.textUnderlinePosition  = "under";
+		}
+		else {
+			return false;
+		}
+   }
+	</script>
+	</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>연화세계</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<style>
+.flex-container{
+            display: flex;
+            margin: 5px;
+            font-size: 24px;
+        }
+        .flex-container.row{flex-direction: row;}
+        .flex-container.column{flex-direction: column;}
+        .flex-container.row-reverse{flex-direction: row-reverse;}
+        .flex-container.column-reverse{flex-direction: column-reverse;}
+        .flex-item{
+            width: 100px;
+            height: 300px;
+            margin: 5px;
+            text-align: center;
+        }
+	</style>
+	</head>
+	<body style="overflow:hidden;">
+	<table style="width: 100%; background: url(./images/background2.png);">
+		<td style="width: 15%;">
+			<div style="display: flex;">
+				<div class="flex-container column">
+					<div class="flex-item">
+						<a href="#" id="goguryeo" onclick="pageMove('goguryeo', this); return false;" style="text-decoration: underline; text-underline-position: under;">고구려</a>
+					</div>
+					<div class="flex-item">
+						<a href="#" id="baekje" onclick="pageMove('baekje', this); return false;">백제</a>
+					</div>
+					<div class="flex-item">
+						<a href="#" id="Sinla" onclick="pageMove('Sinla', this); return false;">신라</a>
+					</div>
+				</div>
+			</div>
+		</td>
+		<td>
+			<iframe id="content" src="./goguryeo.html" frameborder=0; framespacing=0; marginheight=0; marginwidth=0; scrolling=no; vspace=0; style="width: 100%; height: 1000px;"></iframe>
+		</td>
+	</table>
+	<script>
+	function pageMove(pageName, obj) {
+		var page = pageName + ".html";
+		var _src = page;
+		
+		document.getElementById('content').src = _src;
+		
+		if(pageName == "goguryeo") {
+			document.getElementById("goguryeo").style.textDecoration = "underline";
+			document.getElementById("goguryeo").style.textUnderlinePosition  = "under";
+			document.getElementById("baekje").style.textDecoration = "";
+			document.getElementById("baekje").style.textUnderlinePosition  = "";
+			document.getElementById("Sinla").style.textDecoration = "";
+			document.getElementById("Sinla").style.textUnderlinePosition  = "";	 
+	  }
+		else if(pageName == "baekje") {
+			document.getElementById("goguryeo").style.textDecoration = "";
+			document.getElementById("goguryeo").style.textUnderlinePosition  = "";
+			document.getElementById("baekje").style.textDecoration = "underline";
+			document.getElementById("baekje").style.textUnderlinePosition  = "under";
+			document.getElementById("Sinla").style.textDecoration = "";
+			document.getElementById("Sinla").style.textUnderlinePosition  = "";
+		}
+		
+		else if(pageName == "Sinla") {
+			document.getElementById("goguryeo").style.textDecoration = "";
+			document.getElementById("goguryeo").style.textUnderlinePosition  = "";
+			document.getElementById("baekje").style.textDecoration = "";
+			document.getElementById("baekje").style.textUnderlinePosition  = "";
+			document.getElementById("Sinla").style.textDecoration = "underline";
+			document.getElementById("Sinla").style.textUnderlinePosition  = "under";
+		}
+		else {
+			return false;
+		}
+   }
+	</script>
+	</body>
+</html>
