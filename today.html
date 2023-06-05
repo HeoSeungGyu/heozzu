@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>연화세계</title>
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="overflow:hidden;">
+<table style="width: 100%;">
+	<tr>
+		<td>
+			<table style="width: 100%;">
+				<tr>
+					<td style="width: 33.33%">
+						<div class="todaydiv">
+							<div class="calendar">
+								<div class="calendar-header">
+									<span class="prev-month" onclick="prevMonth()">&#10094;</span>
+									<div class="year-month" id="year-month"></div>
+									<span class="next-month" onclick="nextMonth()">&#10095;</span>
+								</div>
+								<table class="calendar-table">
+									<thead>
+									<tr>
+										<th>일</th>
+										<th>월</th>
+										<th>화</th>
+										<th>수</th>
+										<th>목</th>
+										<th>금</th>
+										<th>토</th>
+									</tr>
+									</thead>
+									<tbody id="calendar-body"></tbody>
+								</table>
+							</div>
+							<div style="display: flex; align-items: center; margin-top: 40px; margin-bottom: 10px; width: 100%">
+								<div class="fiveSeconds" style="text-align: left; flex: 1; margin-left: 20px;">
+									<div style="font-weight: bold">5초 삼국시대</div>
+									<br>
+								</div>
+								<div class="fiveSeconds" style="text-align: center; flex: 1;">
+									<div class="fiveSeconds">
+										<span id="question"></span>
+									</div>
+										<span id="answer" style="font-weight: bold; text-align: left;"></span>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td style="width: 33.33%;">
+						<table style="width: 100%;">
+							<tr align="center">
+								<td><img src="./images/poster.png" style="width: 80%; height: 80%;"></img></td>
+							</tr>
+							<tr align="center">
+								<td style="padding-top: 50px; padding-bottom: 50px;">자유로움이 가장 중요한 나,<br>어느 시대와 어울릴까?</td>
+							</tr>
+							<tr>
+								<td align="center">
+									<button type="button" name="psyTest" class="button" onclick="psyTest()">삼국시대 심리검사 바로가기</button>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td style="width: 33.33%;">
+						<div style="display: flex; align-items: center; margin-bottom: 80px; width: 100%">
+							<table style="width: 100%; height: 100%;">
+								<tr>
+									<td style="font-size: 20px;"><b>오늘의 추천</b></td>
+								</tr>
+								<tr>
+									<td><img src="./images/food.png"></img></td>
+								</tr>
+								<tr>
+									<td><b>장엄한 고구려 간식</b></td>
+								</tr>
+								<tr>
+									<td style="padding-top: 50px;"><img src="./images/close.png"></img></td>
+								</tr>
+								<tr>
+									<td><b>백제 궁녀 복식</b></td>
+								</tr>
+							</table>
+						</div>
+
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<script>
+	var currentDate = new Date();
+	function generateCalendar() {
+		var calendarBody = document.getElementById("calendar-body");
+		var yearMonth = document.getElementById("year-month");
+	
+		calendarBody.innerHTML = "";
+		yearMonth.innerHTML = currentDate.getFullYear() + "년 " + (currentDate.getMonth() + 1).toString().padStart(2, '0') + "월";
+	
+		var firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+		var lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+		var date = 1;
+		
+		for(var i = 0; i < 6; i++) {
+			var row = document.createElement("tr");
+			for(var j = 0; j < 7; j++) {
+				var cell = document.createElement("td");
+
+				if (i === 0 && j < firstDay.getDay()) {
+					cell.textContent = "";
+				} 
+				else if (date > lastDay.getDate()) {
+					cell.textContent = "";
+				} 
+				else {
+					cell.textContent = date;
+					if(j === 6) {
+						cell.classList.add("saturday");
+					}
+					if(j === 0) {
+						cell.classList.add("sunday");
+					}
+					cell.addEventListener("click", onDateClick);
+					date++;
+				}
+				row.appendChild(cell);
+			}
+		calendarBody.appendChild(row);
+		}
+	}
+	
+	function prevMonth() {
+		currentDate.setMonth(currentDate.getMonth() - 1);
+		generateCalendar();
+	}
+	
+	function nextMonth() {
+		currentDate.setMonth(currentDate.getMonth() + 1);
+		generateCalendar();
+	}
+	
+	function onDateClick(event) {
+		var selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), event.target.textContent);
+		console.log("Selected Date:", selectedDate);
+	}
+	generateCalendar();
+	
+	var quizzes = [
+		{ question: "고구려의 제1대 왕은?",
+		  answer: "동명왕 (동호)" } ,
+		{ question: "백제의 제1대 왕은?",
+		  answer: "오진왕 (방진왕)" },
+		{ question: "신라의 제1대 왕은?",
+		  answer: "이사부 (남해)" },
+		{ question: "우리나라의 최초 여왕은?",
+		  answer: "신라 선덕여왕" },
+		{ question: "고구려의 여장 영웅은?",
+		  answer: "여진왕후 (소수림)" },
+		{ question: "백제의 여장 영웅은?",
+		  answer: "여사랑 (서초)" },
+		{ question: "신라의 여장 영웅은?",
+		  answer: "아니잖아" },
+		// 걍 여기에 퀴즈랑 답 추가하고 저장누르면 지 알아서 바뀌니까 추가만 하셈 싫어
+	];
+
+	var currentQuizIndex = 0;
+
+	function updateQuiz() {
+		var currentQuiz = quizzes[currentQuizIndex];
+		document.getElementById("question").innerHTML = currentQuiz.question;
+		document.getElementById("answer").innerHTML = currentQuiz.answer;
+		currentQuizIndex = (currentQuizIndex + 1) % quizzes.length;
+	}
+
+	updateQuiz();
+	// 퀴즈 시간 바뀌는거 지금 5초로해놓은거고 더 늦추고 싶으면 밑에 5000이거 바꾸면 돼 5000이 5초임
+	setInterval(updateQuiz, 5000);
+	
+	//심리검사 바로가기
+	function psyTest() {
+		// URL 주소를 link 변수에 담음
+		var link = "https://heozzu.waveon.io";
+		// 새로운 페이지로 이동을 link로 한다
+		window.location.href = link;   
+		// link를 새창으로 연다
+		window.open(link);                
+	}
+</script>
+</body>
+</html>
